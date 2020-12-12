@@ -16,7 +16,7 @@ import {
 } from "../components";
 import Colors from "../constants/colors";
 
-const StartScreen = (props) => {
+const StartScreen = ({ startGameHandler }) => {
   const [number, setNumber] = React.useState("");
   const [confirmed, setConfirmed] = React.useState(false);
   const [selectedNumber, setSelectedNumber] = React.useState();
@@ -50,8 +50,6 @@ const StartScreen = (props) => {
     setSelectedNumber(chosenNumber);
     setNumber("");
   };
-
-  const startGame = () => {};
 
   return (
     <>
@@ -96,8 +94,7 @@ const StartScreen = (props) => {
           <NumberContainer>{selectedNumber}</NumberContainer>
           <CustomButton
             title="Start Game"
-            // color={Colors.primary}
-            onPress={startGame}
+            onPress={() => startGameHandler(selectedNumber)}
           />
         </CustomModal>
       )}
@@ -125,7 +122,7 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "50%",
+    width: "60%",
   },
   input: {
     width: 50,

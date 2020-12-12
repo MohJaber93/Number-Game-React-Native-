@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     backgroundColor: "#fff",
     shadowColor: "black",
+    padding: 15,
     shadowOffset: {
       width: 0,
       height: 2,
