@@ -1,10 +1,14 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 import { CustomButton, Card, Title, ParagraphText } from "../components";
 
 const EndScreen = ({ roundsNumber, userChoice, configureNewGame }) => {
   return (
     <View style={styles.screen}>
+      <Image
+        source={require("../assets/images/success.png")}
+        style={styles.image}
+      />
       <Card style={styles.card}>
         <Title style={styles.title}>The Game is Over!</Title>
         <ParagraphText>Number of rounds: {roundsNumber}</ParagraphText>
@@ -24,7 +28,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    padding: 10,
+    position: "relative",
   },
   title: {
     marginVertical: 10,
@@ -37,6 +41,12 @@ const styles = StyleSheet.create({
   },
   button: {
     width: "50%",
+  },
+  image: {
+    position: "absolute",
+    zIndex: -1,
+    width: "100%",
+    height: "100%",
   },
 });
 export default EndScreen;
