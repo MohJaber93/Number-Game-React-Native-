@@ -93,7 +93,7 @@ const StartScreen = ({ startGameHandler }) => {
           setModalVisible={setConfirmed}
           style={styles.modal}
         >
-          <Text>You selected</Text>
+          <Text style={defaultStyles.paragraphText}>You selected</Text>
           <NumberContainer>{selectedNumber}</NumberContainer>
           <CustomButton
             title="Start Game"
