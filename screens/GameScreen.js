@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Alert, StyleSheet } from "react-native";
+import { View, Image, Alert, StyleSheet } from "react-native";
 import { NumberContainer, Card, CustomButton, Title } from "../components";
 import generateRandomBetween from "../helpers/generateRandomBetween";
 
@@ -47,6 +47,13 @@ const GameScreen = ({ userChoice, endGameHandler }) => {
 
   return (
     <View style={styles.screen}>
+      <Image
+        source={{
+          uri:
+            "https://image.freepik.com/free-vector/flat-thinking-concept_23-2148163823.jpg",
+        }}
+        style={styles.image}
+      />
       <Title style={styles.title}>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonsContainer}>
@@ -68,11 +75,12 @@ const GameScreen = ({ userChoice, endGameHandler }) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    paddingTop: 10,
     alignItems: "center",
+    position: "relative",
   },
   title: {
     marginVertical: 10,
+    color: "#fff",
   },
   buttonsContainer: {
     flexDirection: "row",
@@ -84,6 +92,11 @@ const styles = StyleSheet.create({
   },
   button: {
     width: "45%",
+  },
+  image: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
   },
 });
 
