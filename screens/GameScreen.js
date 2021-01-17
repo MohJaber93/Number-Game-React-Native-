@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Alert, StyleSheet } from "react-native";
-import { NumberContainer, Card, CustomButton } from "../components";
+import { NumberContainer, Card, CustomButton, Title } from "../components";
 import generateRandomBetween from "../helpers/generateRandomBetween";
 
 const GameScreen = ({ userChoice, endGameHandler }) => {
@@ -47,7 +47,7 @@ const GameScreen = ({ userChoice, endGameHandler }) => {
 
   return (
     <View style={styles.screen}>
-      <Text style={styles.title}>Opponent's Guess</Text>
+      <Title style={styles.title}>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonsContainer}>
         <CustomButton
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    fontSize: 20,
     marginVertical: 10,
   },
   buttonsContainer: {

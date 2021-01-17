@@ -1,14 +1,14 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { CustomButton, Card } from "../components";
+import { CustomButton, Card, Title, ParagraphText } from "../components";
 
 const EndScreen = ({ roundsNumber, userChoice, configureNewGame }) => {
   return (
     <View style={styles.screen}>
       <Card style={styles.card}>
-        <Text style={styles.title}>The Game is Over!</Text>
-        <Text>Number of rounds: {roundsNumber}</Text>
-        <Text>Number was: {userChoice}</Text>
+        <Title style={styles.title}>The Game is Over!</Title>
+        <ParagraphText>Number of rounds: {roundsNumber}</ParagraphText>
+        <ParagraphText>Number was: {userChoice}</ParagraphText>
         <CustomButton
           title="New Game"
           onPress={configureNewGame}
@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
-    fontSize: 20,
     marginVertical: 10,
   },
   card: {
