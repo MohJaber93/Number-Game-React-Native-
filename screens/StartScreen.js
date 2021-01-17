@@ -15,6 +15,7 @@ import {
   NumberContainer,
 } from "../components";
 import Colors from "../constants/colors";
+import defaultStyles from "../constants/default-styles";
 
 const StartScreen = ({ startGameHandler }) => {
   const [number, setNumber] = React.useState("");
@@ -55,9 +56,11 @@ const StartScreen = ({ startGameHandler }) => {
     <>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={styles.screen}>
-          <Text style={styles.title}>Start a New Game!</Text>
+          <Text style={{ ...styles.title, ...defaultStyles.titleText }}>
+            Start a New Game!
+          </Text>
           <Card style={styles.card}>
-            <Text>Select a Number</Text>
+            <Text style={defaultStyles.paragraphText}>Select a Number</Text>
             <Input
               style={styles.input}
               keyboardType="number-pad"
@@ -111,7 +114,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     marginVertical: 10,
-    fontFamily: "open-sans-bold",
   },
   card: {
     marginTop: 10,
