@@ -13,6 +13,7 @@ import {
   Input,
   CustomModal,
   NumberContainer,
+  MainButton,
 } from "../components";
 import Colors from "../constants/colors";
 import defaultStyles from "../constants/default-styles";
@@ -95,10 +96,9 @@ const StartScreen = ({ startGameHandler }) => {
         >
           <Text style={defaultStyles.paragraphText}>You selected</Text>
           <NumberContainer>{selectedNumber}</NumberContainer>
-          <CustomButton
-            title="Start Game"
-            onPress={() => startGameHandler(selectedNumber)}
-          />
+          <MainButton onPress={() => startGameHandler(selectedNumber)}>
+            Start Game
+          </MainButton>
         </CustomModal>
       )}
     </>

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
-import { CustomButton, Card, Title, ParagraphText } from "../components";
+import { MainButton, Card, Title, ParagraphText } from "../components";
 import Colors from "../constants/colors";
 
 const EndScreen = ({ roundsNumber, userChoice, configureNewGame }) => {
@@ -18,11 +18,7 @@ const EndScreen = ({ roundsNumber, userChoice, configureNewGame }) => {
           rounds to guess the number{" "}
           <ParagraphText style={styles.highlight}>{userChoice}</ParagraphText>
         </ParagraphText>
-        <CustomButton
-          title="New Game"
-          onPress={configureNewGame}
-          style={styles.button}
-        />
+        <MainButton onPress={configureNewGame}>New Game</MainButton>
       </Card>
     </View>
   );
@@ -43,9 +39,6 @@ const styles = StyleSheet.create({
     maxWidth: "80%",
     height: 200,
     alignItems: "center",
-  },
-  button: {
-    width: "50%",
   },
   image: {
     position: "absolute",
