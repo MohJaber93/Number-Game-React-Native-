@@ -17,7 +17,7 @@ export default function App() {
     "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
     "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
   });
-  console.log(loaded, "just test");
+
   if (!loaded) return null; // maybe return any splash screen
 
   // if (!fontLoaded) {

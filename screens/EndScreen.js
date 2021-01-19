@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 import { CustomButton, Card, Title, ParagraphText } from "../components";
+import Colors from "../constants/colors";
 
 const EndScreen = ({ roundsNumber, userChoice, configureNewGame }) => {
   return (
@@ -11,8 +12,12 @@ const EndScreen = ({ roundsNumber, userChoice, configureNewGame }) => {
       />
       <Card style={styles.card}>
         <Title style={styles.title}>The Game is Over!</Title>
-        <ParagraphText>Number of rounds: {roundsNumber}</ParagraphText>
-        <ParagraphText>Number was: {userChoice}</ParagraphText>
+        <ParagraphText style={styles.endResultText}>
+          Your phone needed{" "}
+          <ParagraphText style={styles.highlight}>{roundsNumber}</ParagraphText>{" "}
+          rounds to guess the number{" "}
+          <ParagraphText style={styles.highlight}>{userChoice}</ParagraphText>
+        </ParagraphText>
         <CustomButton
           title="New Game"
           onPress={configureNewGame}
@@ -47,6 +52,13 @@ const styles = StyleSheet.create({
     zIndex: -1,
     width: "100%",
     height: "100%",
+  },
+  endResultText: {
+    textAlign: "center",
+  },
+  highlight: {
+    color: Colors.primary,
+    fontFamily: "open-sans-bold",
   },
 });
 export default EndScreen;
