@@ -6,6 +6,7 @@ import NumberContainer from "./NumberContainer/NumberContainer";
 import Input from "./Input/Input";
 import ParagraphText from "./ParagraphText/ParagraphText";
 import Title from "./Title/Title";
+import MainButton from "./MainButton/MainButton";
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   NumberContainer,
   Title,
   ParagraphText,
+  MainButton,
 };
