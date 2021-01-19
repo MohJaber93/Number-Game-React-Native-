@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Image, Alert, StyleSheet } from "react-native";
-import { NumberContainer, Card, CustomButton, Title } from "../components";
+import { NumberContainer, Card, MainButton, Title } from "../components";
+import { Ionicons } from "@expo/vector-icons";
 import generateRandomBetween from "../helpers/generateRandomBetween";
 
 const GameScreen = ({ userChoice, endGameHandler }) => {
@@ -57,16 +58,12 @@ const GameScreen = ({ userChoice, endGameHandler }) => {
       <Title style={styles.title}>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonsContainer}>
-        <CustomButton
-          title="Lower"
-          onPress={() => nextGuessHandler("lower")}
-          style={styles.button}
-        />
-        <CustomButton
-          title="Greater"
-          onPress={() => nextGuessHandler("greater")}
-          style={styles.button}
-        />
+        <MainButton onPress={() => nextGuessHandler("lower")}>
+          <Ionicons name="md-remove" size={24} color="#fff" />
+        </MainButton>
+        <MainButton onPress={() => nextGuessHandler("greater")}>
+          <Ionicons name="md-add" size={24} color="#fff" />
+        </MainButton>
       </Card>
     </View>
   );
@@ -84,14 +81,11 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     width: 300,
     maxWidth: "80%",
     height: 100,
     alignItems: "center",
-  },
-  button: {
-    width: "45%",
   },
   image: {
     position: "absolute",
