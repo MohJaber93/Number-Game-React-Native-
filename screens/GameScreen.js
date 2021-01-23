@@ -1,20 +1,33 @@
 import React from "react";
-import { View, Image, Alert, StyleSheet } from "react-native";
-import { NumberContainer, Card, MainButton, Title } from "../components";
+import { View, Image, Alert, StyleSheet, ScrollView } from "react-native";
+import {
+  NumberContainer,
+  Card,
+  MainButton,
+  Title,
+  ParagraphText,
+} from "../components";
 import { Ionicons } from "@expo/vector-icons";
 import generateRandomBetween from "../helpers/generateRandomBetween";
 
+const renderListItem = (value, numOfRounds) => (
+  <Card key={value} style={styles.listItem}>
+    <ParagraphText>{value}</ParagraphText>
+    <ParagraphText>#{numOfRounds}</ParagraphText>
+  </Card>
+);
+
 const GameScreen = ({ userChoice, endGameHandler }) => {
-  const [currentGuess, setCurrentGuess] = React.useState(
-    generateRandomBetween(1, 100, userChoice)
-  );
-  const [roundsNumber, setRoundsNumber] = React.useState(0);
+  const firstGuess = generateRandomBetween(1, 100, userChoice);
+  const [currentGuess, setCurrentGuess] = React.useState(firstGuess);
+  console.log(firstGuess, typeof firstGuess);
+  const [rounds, setRounds] = React.useState([firstGuess]);
   const currentLow = React.useRef(1);
   const currentHigh = React.useRef(100);
 
   React.useEffect(() => {
     if (userChoice === currentGuess) {
-      endGameHandler(roundsNumber);
+      endGameHandler(rounds.length);
     }
   }, [userChoice, currentGuess]);
 
@@ -35,7 +48,7 @@ const GameScreen = ({ userChoice, endGameHandler }) => {
     if (direction === "lower") {
       currentHigh.current = currentGuess;
     } else {
-      currentLow.current = currentGuess;
+      currentLow.current = currentGuess + 1;
     }
     const nextGuessedNumber = generateRandomBetween(
       currentLow.current,
@@ -43,7 +56,7 @@ const GameScreen = ({ userChoice, endGameHandler }) => {
       currentGuess
     );
     setCurrentGuess(nextGuessedNumber);
-    setRoundsNumber((prevRoundsNum) => prevRoundsNum + 1);
+    setRounds((prevRounds) => [nextGuessedNumber, ...prevRounds]);
   };
 
   return (
@@ -65,6 +78,13 @@ const GameScreen = ({ userChoice, endGameHandler }) => {
           <Ionicons name="md-add" size={24} color="#fff" />
         </MainButton>
       </Card>
+      <View style={styles.listContainer}>
+        <ScrollView contentContainerStyle={styles.list}>
+          {rounds.map((round, index) =>
+            renderListItem(round, rounds.length - index)
+          )}
+        </ScrollView>
+      </View>
     </View>
   );
 };
@@ -91,6 +111,22 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     height: "100%",
+  },
+  listContainer: {
+    marginVertical: 10,
+    width: "50%",
+    flex: 1,
+  },
+  list: {
+    alignItems: "center",
+    justifyContent: "flex-end",
+    flexGrow: 1,
+  },
+  listItem: {
+    width: "93%",
+    marginVertical: 5,
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });
 
